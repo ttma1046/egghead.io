@@ -1,21 +1,17 @@
-var app = angular.module('app', []);
-
-app.directive("zippy", function($templateCache) {
-	console.log($templateCache.get("zippy.html "));
-
-	return {
-		restrict:"E",
-		transclude:true,
-		scope:{
-			title:"@"
-		},
-		templateUrl:$templateCache.get("zippy.html"),
-		link: function (scope) {
-			scope.isContentVisible = false;
-
-			scope.toggleContent = function() {
-				scope.isContentVisible = !scope.isContentVisible;
-			}
-		}		
-	};
+var myApp = angular.module('myApp',[])
+myApp.factory('Data', function(){
+	return {message:"I'm data from a service."}
 });
+
+
+function FirstCtrl($scope, Data) {
+	$scope.data = Data;
+}
+
+function SecondCtrl($scope, Data) {
+	$scope.data = Data;
+
+	$scope.reversedMessage = function () {
+		return $scope.data.message.split("").reverse().join(""); 
+	}
+}
