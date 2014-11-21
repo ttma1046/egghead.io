@@ -69,7 +69,7 @@ myApp.factory('Avengers', function(){
 	return Avengers;
 });
 
-function AvengersCtrl($scope, Avengers) {
+function avengersCtrl($scope, Avengers) {
 	$scope.avengers = Avengers;
 }
 
@@ -78,7 +78,7 @@ var app = angular.module("superhero", [])
 
 app.directive("superman", function(){
 	return {
-		restrict: "C",
+		restrict: "M",
 		link: function() {
       alert("I am working!")
     }
