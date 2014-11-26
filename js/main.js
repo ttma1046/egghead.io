@@ -74,7 +74,7 @@ function avengersCtrl($scope, Avengers) {
 }
 
 
-var app = angular.module("superhero", [])
+var app = angular.module("superhero", []);
 
 app.directive("superman", function(){
 	return {
@@ -92,4 +92,14 @@ app.directive("flash", function(){
       alert("I am working faster!")
     }
   };
+})
+
+var app = angular.module("behaviorApp", []);
+
+app.directive("enter", function () {
+  return function (scope, element) {
+    element.bind("mouseenter", function() {
+      console.log("I'm inside of you.")
+    })
+  }    
 })
