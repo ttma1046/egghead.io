@@ -6,8 +6,14 @@
 		<link rel="stylesheet" type="text/css" href="css/foundation.css">
 	</head>
 	<body>
-		<div ng-app="behaviorApp">
-				<div enter="panel" leave>I'm content!</div>		
+		<div ng-app="twitterApp">
+				<div ng-controller="AppCtrl">
+					<div enter>
+						Roll over to load more tweets
+
+					</div>
+
+				</div>	
 		</div>
 		<script type="text/javascript" src="lib/angular.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
