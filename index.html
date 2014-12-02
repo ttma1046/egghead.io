@@ -14,13 +14,28 @@
 				<div drink flavor="ctrlFlavor"></div>
 			</div>
 		</div>-->
-		<div ng-app="phoneApp">
+		<!--<div ng-app="phoneApp">
 			<div ng-controller="AppCtrl">
 				<phone dial="callHome(message)"></phone>
 				<phone dial="callHome(message)"></phone>
 				<phone dial="callHome(message)"></phone>
 			</div>
+		</div>-->
+
+		<div ng-app="advancedPhoneApp">
+			<div ng-controller="AdAppCtrl">
+
+				<phone number="555-1234" network="network" make-call="leaveVoicemail(number, message)"></phone>
+
+
+				<phone number="567-5309" network="network" make-call="leaveVoicemail(number, message)"></phone>
+
+
+				<phone number="911" network="network" make-call="leaveVoicemailHome(number, message)"></phone>
+			</div>
+
 		</div>
+
 		<script type="text/javascript" src="lib/angular.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
