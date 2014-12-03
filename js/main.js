@@ -279,23 +279,29 @@ advancedPhone.directive("phone", function () {
 
 var phone2App = angular.module("phone2App", []);
 
-phone2App.controller("App2Ctrl", function ($scope){
-  this.sayHi = function() {
+var controllers = {};
+
+controllers.App2Ctrl = function ($scope) {
+    this.sayHi = function() {
     alert("hi");
   };
 
   return $scope.myController = this;
-});
+}
 
-phone2App.directive("panel", function(){
+
+var directives = {};
+
+directives.panel = function(){
   return {
     restrict:"E",
     transclude: true,
     template:'<div class="panel" ng-transclude>This is a panel component!</div>'
   }
-})
+};
 
-
+phone2App.directive(directives)
+phone2App.controller(controllers);
 
 
 
