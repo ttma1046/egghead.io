@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',[])
+/*var myApp = angular.module('myApp',[])
 
 myApp.factory('Avengers', function(){
 	var Avengers = {}; 
@@ -103,7 +103,6 @@ app.directive("enter", function () {
     })
   }    
 });
-
 
 app.directive("leave", function () {
   return function (scope, element, attrs) {
@@ -323,7 +322,15 @@ app.directive("zippy", function(){
     }
   }
 })
+*/
+var dumbapp = angular.module("dumbapp",[]);
 
+dumbapp.directive("dumbpassword", function() {
+  return {
+    restrict: 'E',
+    template: '<div><input type="text" ng-model="model.input" /><div>{{model.input}}</div></div>',
+  };
+});
 
 
 
