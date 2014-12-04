@@ -305,14 +305,17 @@ phone2App.controller(controllers);
 */
 var app = angular.module("app", []);
 
-app.directive("zippy", function(){
+app.directive("zippy", function($templateCache){
+  console.log($templateCache.get("zippy.html"));
+
+
   return {
     restrict: "E",
     transclude: true,
     scope: {
       title: "@"
     },
-    templateUrl:'zippy.html',
+    templateUrl: "zippy.html",
     link: function(scope) {
       scope.isContentVisible = false;
 
