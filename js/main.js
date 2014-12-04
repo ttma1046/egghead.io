@@ -302,7 +302,7 @@ directives.panel = function(){
 phone2App.directive(directives)
 phone2App.controller(controllers);
 
-
+*/
 var app = angular.module("app", []);
 
 app.directive("zippy", function(){
@@ -312,7 +312,7 @@ app.directive("zippy", function(){
     scope: {
       title: "@"
     },
-    template:'<div><h3 ng-click="toggleContent()">{{title}}</h3></div><div ng-show="isContentVisible" ng-transclude>Hello World!</div>',
+    templateUrl:'zippy.html',
     link: function(scope) {
       scope.isContentVisible = false;
 
@@ -323,6 +323,8 @@ app.directive("zippy", function(){
   }
 })
 
+
+/*  
 var dumbapp = angular.module("dumbapp",[]);
 
 
@@ -351,7 +353,7 @@ this.link =  function(scope) {
     }
   };
 });
-*/
+
 
 var app = angular.module("app", []);
 
@@ -370,6 +372,7 @@ app.directive('myDirective', function($http, $parse){
     }
   }
 });
+*/
 
 
 
