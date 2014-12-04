@@ -325,10 +325,29 @@ app.directive("zippy", function(){
 */
 var dumbapp = angular.module("dumbapp",[]);
 
+
+
 dumbapp.directive("dumbpassword", function() {
+
+var validElement = angular.element("<div>{{model.input}}</div>"); 
+
+this.link =  function(scope) {
+        scope.$watch("model.input", function (value){
+           if (value === "password") {
+             validElement.toggleClass("alert-box alert");
+           }
+        });
+      };
+
   return {
     restrict: 'E',
-    template: '<div><input type="text" ng-model="model.input" /><div>{{model.input}}</div></div>',
+    replace: true,
+    template: '<div><input type="text" ng-model="model.input" /></div>',
+    compile: function(tElem) {
+      tElem.append(validElement);
+    
+      return link; 
+    }
   };
 });
 
