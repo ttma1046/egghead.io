@@ -106,7 +106,7 @@ app.directive("enter", function () {
 
 app.directive("leave", function () {
   return function (scope, element, attrs) {
-    element.bind("mouseleave", function() {
+    element.bind("  mouseleave", function() {
       element.removeClass(attrs.enter);
     })
   }    
@@ -322,7 +322,7 @@ app.directive("zippy", function(){
     }
   }
 })
-*/
+
 var dumbapp = angular.module("dumbapp",[]);
 
 
@@ -336,7 +336,8 @@ this.link =  function(scope) {
            if (value === "password") {
              validElement.toggleClass("alert-box alert");
            }
-        });
+        });   
+
       };
 
   return {
@@ -350,6 +351,38 @@ this.link =  function(scope) {
     }
   };
 });
+*/
+
+var app = angular.module("app", []);
+
+app.controller('MyCtrl', function($scope, $http, $parse){
+  console.log($scope);
+});
+
+app.controller('AlternativCtrl', ['$scope', '$http', function(a, b){
+  console.log(b);  
+}])
+
+app.directive('myDirective', function($http, $parse){
+  return {
+    link: function(scope, element, attrs) {
+      console.log(scope);
+    }
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
