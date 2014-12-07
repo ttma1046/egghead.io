@@ -41,7 +41,7 @@ myApp.factory('Avengers', function(){
       character: 'Agent Maria Hill'
     },
     {
-      name: 'Stellan Skarsg氓rd',
+      name: 'Stellan Skarsgæ°“rd',
       character: 'Selvig'
     },
     {
@@ -387,12 +387,19 @@ app.directive('myDirective', function($http, $parse){
 var app = angular.module("app", ['ngRoute']);
 
 app.config(function($routeProvider) {
-    $routeProvider.when('/',
+    $routeProvider
+    .when('/',
     {
       templateUrl: "app.html",
       controller: "AppCtrl"
-    }
-  );
+    })
+    .when('/pizza', 
+    {
+      template: "Yum!!"
+    })
+    .otherwise({
+      template: "This doesnt exist"
+    })
 });
 
 app.controller('AppCtrl', function($scope){
