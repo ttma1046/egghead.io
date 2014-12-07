@@ -390,34 +390,26 @@ app.config(function($routeProvider) {
     $routeProvider
     .when('/',
     {
-      templateUrl: "app.html",
-      controller: "AppCtrl"
+      templateUrl: "view/app.html",
+      controller: "AppCtrl",
+      resolve: {
+        app: function($q, $timeout) {
+          var defer = $q.defer();
+          
+          $timeout(function () {
+            defer.resolve();
+          }, 2000);
+
+          return defer.promise;
+        }
+      }
+
     })
 });
 
-app.controller('AppCtrl', function($scope, $q){
-
-  var defer = $q.defer();
-
-  defer.promise
-  .then(function (weapon) {
-    alert("You can have my " + weapon);
-
-    return "axe";
-  })
-  .then(function (weapon) {
-    alert("And my " + weapon);
-
-    return "bow";
-  })
-  .then(function (weapon) {
-    alert("Also my " + weapon)
-  });
-
-  defer.resolve("sword");
-
+app.controller('AppCtrl', function($scope){
   $scope.model = {
-    message: "This is my app!!!"
+    message: "I'm a great app!!!"
   };  
 })
 
