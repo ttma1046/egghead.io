@@ -388,17 +388,29 @@ var app = angular.module("app", ['ngRoute']);
 
 app.config(function($routeProvider) {
     $routeProvider
+    .when('/', 
+    {
+      template: "This is my app!"
+    })
     .when('/map/:country/:state/:city',
     {
       templateUrl: "app.html",
       controller: "AppCtrl"
     })
-    .when('/pizza', 
+    .when('/pizza/:crust/:toppings', 
     {
-      template: "Yum!!"
+      redirectTo: function(routeParams, path, search) {
+        console.log(routeParams);
+        console.log(path);
+        console.log(search);
+        return "/" + routeParams.crust
+      }      
+    })
+    .when('/deep', {
+      template: 'Deep dish'
     })
     .otherwise({
-      template: "This doesnt exist"
+      redirectTo: "/"
     })
 });
 
