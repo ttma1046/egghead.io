@@ -407,9 +407,10 @@ app.controller('AppCtrl', function($scope, $routeParams){
     message : "Address: " + 
     $routeParams.country + ", " +
     $routeParams.state + ", " +
-    $routeParams.city
+    $routeParams.city 
   };  
 })
+
 
 
 
