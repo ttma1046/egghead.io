@@ -402,6 +402,7 @@ app.config(function($routeProvider) {
     })
 });
 
+
 app.controller('AppCtrl', function($scope){
   $scope.model = {
     message : "This is my app!!!"
