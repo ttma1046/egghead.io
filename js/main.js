@@ -302,7 +302,7 @@ directives.panel = function(){
 phone2App.directive(directives)
 phone2App.controller(controllers);
 
-*/
+
 var app = angular.module("app", []);
 
 app.run(function ($templateCache)
@@ -334,7 +334,7 @@ app.directive("zippy", function($templateCache){
 })
 
 
-/*  
+
 var dumbapp = angular.module("dumbapp",[]);
 
 
@@ -384,6 +384,7 @@ app.directive('myDirective', function($http, $parse){
 });
 */
 
+
 var app = angular.module("app", ['ngRoute']);
 
 app.config(function($routeProvider) {
@@ -391,16 +392,24 @@ app.config(function($routeProvider) {
     .when('/',
     {
       templateUrl: "view/app.html",
-      controller: "AppCtrl",
+      controller: "ViewCtrl",
       resolve: {
-        loadData: appCtrl.loadData,
-        prepData: appCtrl.prepData  
+        loadData: viewCtrl.loadData
       }
 
     })
 });
 
-var appCtrl = app.controller('AppCtrl', function($scope, $route){
+app.controller('AppCtrl', function($rootScope){
+  $rootScope.$on("$routeChangeError", function(event, current, previous, rejection) {
+    console.log(rejection);
+    console.log(current);
+    // console.log(pervious);
+    console.log(event);
+  })
+});
+
+var viewCtrl = app.controller('ViewCtrl', function($scope, $route){
   console.log($route);
 
   $scope.model = {
@@ -408,27 +417,16 @@ var appCtrl = app.controller('AppCtrl', function($scope, $route){
   };  
 });
 
-appCtrl.loadData = function($q, $timeout) {
+viewCtrl.loadData = function($q, $timeout) {
           var defer = $q.defer();
           
           $timeout(function () {
-            defer.resolve("loadData");
+            defer.reject("Your network is down");
           }, 2000);
 
           return defer.promise;
         };
 
-
-appCtrl.prepData = function($q, $timeout) {
-          var defer = $q.defer();
-          
-          $timeout(function () {
-            defer.resolve("prepData");
-          }, 2000);
-
-          return defer.promise;
-        };
- 
 
 
 
