@@ -305,6 +305,13 @@ phone2App.controller(controllers);
 */
 var app = angular.module("app", []);
 
+app.run(function ($templateCache)
+{
+  $templateCache.put("zippy.html", '<div><h3 ng-click="toggleContent()">{{title}}</h3><div ng-show="isContentVisible" ng-transclude>Hello World!</div></div>')
+  console.log($templateCache.info());
+});
+
+
 app.directive("zippy", function($templateCache){
   console.log($templateCache.get("zippy.html"));
 
@@ -377,7 +384,22 @@ app.directive('myDirective', function($http, $parse){
 });
 */
 
+var app = angular.module("app", ['ngRoute']);
 
+app.config(function($routeProvider) {
+    $routeProvider.when('/',
+    {
+      templateUrl: "app.html",
+      controller: "AppCtrl"
+    }
+  );
+});
+
+app.controller('AppCtrl', function($scope){
+  $scope.model = {
+    message : "This is my app!!!"
+  };  
+})
 
 
 

@@ -45,14 +45,7 @@
 						<div class="button" ng-click="myController.sayHi()">Click me!</div>
 				</div>
 			</div>-->
-			<div ng-app="app">
-
-				<script type="text/ng-template" id="zippy.html">
-				<div>
-					<h3 ng-click="toggleContent()">{{title}}</h3>
-					<div ng-show="isContentVisible" ng-transclude>Hello World!</div>
-				</div>
-				</script>
+			<!--<div ng-app="app">
 
 				<input type="text" ng-model="model.title" />
 				<input type="text" ng-model="model.content" />
@@ -65,7 +58,7 @@
 
 				</zippy>
 
-			</div>
+			</div>-->
 		
 		<!--<div ng-app="dumbapp">
 			<dumbpassword></dumbpassword>
@@ -80,8 +73,12 @@
 
 
 		</div>-->
+		<div ng-app="app">
+			<ng-view></ng-view>
+		</div>
 
 		<script type="text/javascript" src="lib/angular.js"></script>
+		<script type="text/javascript" src="lib/angular-route.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>
