@@ -387,18 +387,54 @@ app.directive('myDirective', function($http, $parse){
 
 var app = angular.module("app", ['ngRoute']);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider,$locationProvider) {
     $routeProvider
     .when('/',
     {
       templateUrl: "view/app.html",
       controller: "ViewCtrl",
-      resolve: {
-        loadData: viewCtrl.loadData
+    })
+    .when('/new',
+    {
+      templateUrl: 'view/new.html',
+      controller: 'NewCtrl',
+      reslove: {
+        loadData:viewCtrl.loadData
       }
-
     })
 });
+
+app.controller('AppCtrl', function($scope, $rootScope, $route, $location){
+  $rootScope.$on("$routeChangeStart", function(event, current, previous, rejection) {
+    console.log($scope, $rootScope, $route, $location);
+  })
+
+  $rootScope.$on("$routeChangeSuccess", function(event, current, previous, rejection) {
+    console.log($scope, $rootScope, $route, $location);
+  })
+});
+
+var viewCtrl = app.controller('ViewCtrl', function($scope, $route, $location){
+  $scope.changeRoute = function () {
+    console.log($scope);
+    $location.path("/new")
+  }  
+});
+
+app.controller("NewCtrl", function ($scope, loadData, $template) {
+  console.log($scope, loadData, $template);
+});
+
+viewCtrl.loadData = function($q, $timeout) {
+          var defer = $q.defer();
+          
+          $timeout(function () {
+            defer.reslove({ message: "success"})
+          }, 2000);
+
+          return defer.promise;
+        };
+
 
 app.directive("error", function($rootScope) {
   return {
@@ -407,38 +443,14 @@ app.directive("error", function($rootScope) {
     link: function(scope) {
     $rootScope.$on("$routeChangeError", function(event, current, previous, rejection) {
         scope.isError = true;
-  });    
+      });    
     }
   }
 
 });
 
-app.controller('AppCtrl', function($rootScope){
-  $rootScope.$on("$routeChangeError", function(event, current, previous, rejection) {
-    // console.log(rejection);
-    // console.log(current);
-    // console.log(pervious);
-    console.log(event);
-  })
-});
 
-var viewCtrl = app.controller('ViewCtrl', function($scope, $route){
-  console.log($route);
 
-  $scope.model = {
-    message: "I'm a great app!!!"
-  };  
-});
-
-viewCtrl.loadData = function($q, $timeout) {
-          var defer = $q.defer();
-          
-          $timeout(function () {
-            defer.resolve();
-          }, 2000);
-
-          return defer.promise;
-        };
 
 
 
