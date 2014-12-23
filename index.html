@@ -73,10 +73,23 @@
 
 
 		</div>-->
-		  <div ng-app="app" ng-controller="AppCtrl">
-		    <h1 class="panel">{{title}}</h1>
+		  <div ng-app="app">
+		  	<clock timezone="MST"></clock>
+			<br /><br /><br /><br /><br /><br />
+		  	<panel title="I'm a title">
+		  		<clock timezone="PST"></clock>
+		  	</panel>
+			<br /><br /><br /><br /><br /><br />
+		  	<panel title="I'm a title">
+		  		<clock timezone="PST"></clock>
+		  		<clock timezone="PST"></clock>
+		  		<clock timezone="PST"></clock>
+		  		<clock timezone="PST"></clock>
+		  		<clock timezone="PST"></clock>
+		  	</panel>
+
 		  </div>
-		  
+
 		<script type="text/javascript" src="lib/angular.js"></script>
 		<script type="text/javascript" src="lib/angular-route.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
