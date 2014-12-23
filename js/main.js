@@ -454,9 +454,13 @@ app.directive("error", function($rootScope) {
 var app = angular.module("app", ['ngRoute']);
 
 app.config(function ($provide) {
-  $provide.factory("game", function () {
+  $provide.provider("game", function () {
     return {
-      title: "Starcraft"
+      $get: function () {
+        return {
+          title: "Starcraft"    
+        }
+      }      
     }
   })
 })
