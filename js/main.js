@@ -453,22 +453,14 @@ app.directive("error", function($rootScope) {
 
 var app = angular.module("app", ['ngRoute']);
 
-app.provider("game", function () {
-    var type;
+app.factory('game', function(){
     return {
-      setType: function(value){
-        type = value
-      },
-      $get: function () {
-        return {
-          title: type + "craft"    
-      }
-    }      
+      title: "Starcraft"
   }
-})
+});
 
-app.config(function (gameProvider) {
-  gameProvider.setType("War");
+angular.injector(["app"]).invoke(function (game) {
+  alert(game.title)
 })
 
 app.controller('AppCtrl', function($scope, game){
