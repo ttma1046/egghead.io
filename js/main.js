@@ -453,11 +453,13 @@ app.directive("error", function($rootScope) {
 
 var app = angular.module("app", ['ngRoute']);
 
-app.factory('game', function(){
-  return {
-    title: "Starcraft"
-}
-});
+app.config(function ($provide) {
+  $provide.factory("game", function () {
+    return {
+      title: "Starcraft"
+    }
+  })
+})
 
 app.controller('AppCtrl', function($scope, game){
   $scope.title = game.title;
