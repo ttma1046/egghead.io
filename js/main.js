@@ -385,7 +385,7 @@ app.directive('myDirective', function($http, $parse){
 */
 
 
-
+/*
 var app = angular.module("app", ['ngRoute']);
 
 app.config(function($routeProvider,$locationProvider) {
@@ -449,7 +449,19 @@ app.directive("error", function($rootScope) {
   }
 
 });
+*/
 
+var app = angular.module("app", ['ngRoute']);
+
+app.factory('game', function(){
+  return {
+    title: "Starcraft"
+}
+});
+
+app.controller('AppCtrl', function($scope, game){
+  $scope.title = game.title;
+});
 
 
 
